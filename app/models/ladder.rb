@@ -8,6 +8,11 @@ class Ladder
       @player = player
     end
 
+    def cache_key
+      timestamp = player.updated_at.to_s(:nsec)
+      "rankings/#{player.id}-#{timestamp}"
+    end
+
     def player_name
       player.name
     end
