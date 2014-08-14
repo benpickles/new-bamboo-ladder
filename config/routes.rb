@@ -1,10 +1,9 @@
 LadderApp::Application.routes.draw do
-  root 'homes#show'
+  root 'ladder#show'
 
   match '/auth/:provider/callback', to: 'sessions#create', via: %w{get post}
 
-  resource :home, only: [:show]
-  resources :players, only: [:index, :create]
+  resources :players, only: :create
   resources :settings, only: [:index]
   resources :results, only: [:index, :create, :destroy] do
     collection do
