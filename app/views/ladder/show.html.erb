@@ -1,10 +1,3 @@
 <ol class="rankings" data-max="<%= @ladder.score_history_max %>" data-min="<%= @ladder.score_history_min %>">
-  <% @ladder.rankings.each do |ranking| %>
-    <li class="rankings-entry">
-      <span class="rankings-position"><%= ranking.position %>.</span>
-      <span class="rankings-name"><%= ranking.player_name %></span>
-      <span class="rankings-score"><%= ranking.score %></span>
-      <span class="sparkline"><%= ranking.score_history.join(',') %></span>
-    </li>
-  <% end %>
+  <%= render partial: 'ranking', collection: @ladder.rankings %>
 </ol>
