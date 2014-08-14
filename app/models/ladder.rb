@@ -43,6 +43,11 @@ class Ladder
     new
   end
 
+  def cache_key
+    timestamp = Result.maximum(:updated_at).to_s(:nsec)
+    "ladder/#{timestamp}"
+  end
+
   def rankings
     Player.in_elo_order.map(&Ranking)
   end

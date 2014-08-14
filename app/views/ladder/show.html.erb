@@ -1,3 +1,5 @@
-<ol class="rankings" data-max="<%= @ladder.score_history_max %>" data-min="<%= @ladder.score_history_min %>">
-  <%= render partial: 'ranking', collection: @ladder.rankings %>
-</ol>
+<% cache(@ladder) do %>
+  <ol class="rankings" data-max="<%= @ladder.score_history_max %>" data-min="<%= @ladder.score_history_min %>">
+    <%= render partial: 'ranking', collection: @ladder.rankings %>
+  </ol>
+<% end %>
