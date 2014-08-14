@@ -1,4 +1,4 @@
-<ol class="rankings" data-max="<%= sparkline_max %>" data-min="<%= sparkline_min %>">
+<ol class="rankings" data-max="<%= @ladder.score_history_max %>" data-min="<%= @ladder.score_history_min %>">
   <% @ladder.rankings.each do |ranking| %>
     <li class="rankings-entry">
       <span class="rankings-position"><%= ranking.position %>.</span>
