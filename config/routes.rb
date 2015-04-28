@@ -3,6 +3,9 @@ LadderApp::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create', via: %w{get post}
 
+  get 'api/players' => 'api#players'
+  get 'api/results' => 'api#results'
+
   resource :home, only: [:show]
   resources :players, only: [:index, :create]
   resources :settings, only: [:index]
