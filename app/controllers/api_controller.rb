@@ -1,4 +1,8 @@
 class ApiController < ActionController::Base
+  def ladder
+    render json: ladder_for_api
+  end
+
   def players
     render json: players_for_api
   end
@@ -8,7 +12,7 @@ class ApiController < ActionController::Base
   end
 
   private
-    def players_for_api
+    def ladder_for_api
       last_points = nil
 
       Player.in_elo_order.map.with_index { |player, index|
@@ -21,6 +25,15 @@ class ApiController < ActionController::Base
           name: player.name,
           points: points,
           position: position
+        }
+      }
+    end
+
+    def players_for_api
+      Player.order(:name).map { |player|
+        {
+          id: player.id,
+          name: player.name
         }
       }
     end
